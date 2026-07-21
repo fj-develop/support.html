@@ -6,9 +6,11 @@ Apple-ready GitHub Pages website.
 - Home
 - CashPath Planner
 - PawJournal
+- RicePerfect
 - Support
 - CashPath Privacy Policy
 - PawJournal Privacy Policy
+- RicePerfect Privacy Policy
 - Terms of Service
 
 ## Notes
