@@ -24,3 +24,12 @@ Open `index.html` in Safari.
 
 ## GitHub Pages
 Upload all files to your GitHub Pages repository and enable Pages from the main branch.
+
+
+## TallyTick update — 31 October 2026
+- Added tallytick.html, privacy-tallytick.html and support-tallytick.html.
+- Added the original app icon, homepage listing, shared navigation and footer links.
+- Website copy remains English; the app supports English, Danish and German.
+- Preserved existing app pages and privacy policy text.
+- See ../outputs/tallytick/REVIEW.md for code evidence and publication blockers.
+- Not published. App Store URL is intentionally omitted until verified.
