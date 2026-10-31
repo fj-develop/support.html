@@ -103,14 +103,18 @@ img{max-width:100%;display:block}
   background:white;
 }
 .button.primary{background:#000;color:white}
-.section{padding:64px 0}
+.section{padding-block:64px}
 .app-grid{
   display:grid;
-  grid-template-columns:1.15fr .85fr;
+  grid-template-columns:minmax(0,1.15fr) minmax(0,.85fr);
+  grid-template-areas:"text icon";
   gap:24px;
   margin-bottom:72px;
 }
-.app-grid.reverse{grid-template-columns:.85fr 1.15fr}
+.app-grid.reverse{grid-template-columns:minmax(0,.85fr) minmax(0,1.15fr);grid-template-areas:"icon text"}
+.app-grid > .app-card{grid-area:text}
+.app-grid > .icon-panel{grid-area:icon}
+.app-grid > *{min-width:0}
 .panel{
   background:var(--surface);
   border:1px solid var(--line);
@@ -118,13 +122,13 @@ img{max-width:100%;display:block}
   min-height:350px;
 }
 .app-card{
-  padding:46px;
+  padding:clamp(24px,4vw,46px);
   display:flex;
   flex-direction:column;
   justify-content:center;
 }
 .app-card h2{
-  font-size:34px;
+  font-size:clamp(26px,3.4vw,34px);
   letter-spacing:-.04em;
   margin:0 0 20px;
 }
@@ -308,13 +312,49 @@ img{max-width:100%;display:block}
   background:white;border:1px solid var(--line);border-radius:8px;padding:30px;
 }
 .feature h3{margin:0 0 10px;font-size:20px}
+/* Navigation adapts before the content columns need to stack. */
+.logo{flex-shrink:0;white-space:nowrap}
+.nav-links{min-width:0}
+.nav-links a{white-space:nowrap}
+#apps{scroll-margin-top:150px}
+.email-box{max-width:100%;overflow-wrap:anywhere;display:inline-block}
+.doc-card{overflow-wrap:anywhere}
+.page-hero.container{padding-inline:24px}
+@media(max-width:960px){
+  .nav{flex-direction:column;align-items:flex-start;gap:8px}
+  .nav-links{flex-wrap:wrap;gap:4px 20px;font-size:12px}
+  .nav-links a{min-height:44px;display:inline-flex;align-items:center}
+  .feature-list,.stats-grid{grid-template-columns:repeat(2,minmax(0,1fr))}
+}
 @media(max-width:800px){
-  .nav{align-items:flex-start}
-  .nav-links{gap:14px;font-size:11px;flex-wrap:wrap;justify-content:flex-end}
-  .app-grid,.app-grid.reverse,.support-grid,.stats-grid,.benefits,.feature-list,.app-detail{grid-template-columns:1fr}
-  .app-card,.support-card,.doc-card{padding:30px}
-  .hero{padding-top:56px}
+  .app-grid,.app-grid.reverse,.support-grid,.app-detail{grid-template-columns:minmax(0,1fr)}
+  .app-grid,.app-grid.reverse{grid-template-areas:"text" "icon";gap:12px;margin-bottom:48px}
+  .app-grid .panel{min-height:0}
+  .app-grid .icon-panel{padding:28px;min-height:220px}
+  .app-card,.support-card,.doc-card{padding:clamp(24px,4vw,30px)}
+  .app-card .tags{margin:20px 0}
+  .app-card .mini-links{margin-top:12px;gap:8px 20px}
+  .mini-links a{min-height:44px;display:inline-flex;align-items:center}
+  .hero{padding:56px 24px}
+  .section{padding-block:40px}
   .footer .container{align-items:flex-start;flex-direction:column}
+  .footer-links{gap:12px 24px}
+}
+@media(max-width:600px){
+  .container,.nav,.page-hero.container{padding-inline:20px}
+  .nav{padding-block:12px}
+  .nav-links{gap:0 16px}
+  .benefits,.feature-list,.stats-grid{grid-template-columns:minmax(0,1fr)}
+  .benefit,.feature,.stat{padding:24px}
+  .page-hero{padding-top:40px}
+  .page-hero h1{font-size:clamp(32px,8vw,40px)}
+  .page-hero p{font-size:18px}
+  .app-detail{gap:24px;padding-bottom:40px}
+  .app-detail h1{font-size:clamp(36px,9vw,48px)}
+  .app-detail .app-icon{width:170px;height:170px}
+  .notice,.tip{padding:20px}
+  .email-box{padding:14px 16px}
+  .cta{padding:36px 20px;margin:40px 0}
 }
 
 /* v2 Apple-ready polish */
